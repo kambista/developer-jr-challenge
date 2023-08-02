@@ -22,6 +22,19 @@ const swaggerOptions = {
         version: '1.0.0',
         description: 'Descripción de tu API',
       },
+      components: {
+        schemas: {
+          Todo: {
+            type: 'object',
+            properties: {
+              id: { type: 'integer' },
+              title: { type: 'string' },
+              description: { type: 'string' },
+              completed: { type: 'boolean', default: false },
+            },
+          },
+        },
+      },
     },
     apis: ['app.js'],
   };
