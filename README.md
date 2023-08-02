@@ -83,3 +83,11 @@ git rm --cached -r .
 ```bash
 git reset --hard
 ```
+  - Primero da de baja todo (No es necesario pero se recomienda)
+```bash
+docker-compose down -v
+```
+  - Ejecuta nuevamente
+```bash
+docker-compose up
+```
