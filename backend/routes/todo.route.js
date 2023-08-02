@@ -30,9 +30,9 @@ const swaggerOptions = {
     definition: {
       openapi: '3.0.0',
       info: {
-        title: 'Nombre de tu API',
+        title: 'TodoList',
         version: '1.0.0',
-        description: 'Descripción de tu API',
+        description: 'Api para gestionar tareas',
       },
       components: {
         schemas: {
