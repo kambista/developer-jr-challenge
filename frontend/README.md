@@ -1,8 +1,27 @@
-# React + Vite
+# Developer Jr Challenge
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Esta carpeta contiene el codigo fuente del frontend para ejecutarlo de manera manual sin docker
 
-Currently, two official plugins are available:
+## Requisitos previos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Antes de comenzar, asegúrate de tener instalados los siguientes componentes en tu máquina:
+
+- Node >= 16.14.0
+- Yarn o npm
+
+## Instrucciones para ejecutar la aplicación
+
+1. Dentro de esta carpeta ejecuta:
+
+```bash
+yarn install
+```
+
+2. Arranca el proyecto
+```bash
+yarn dev
+```
+
+3. El proyecto correra en el puerto 5173: http://localhost:5173
+
+
