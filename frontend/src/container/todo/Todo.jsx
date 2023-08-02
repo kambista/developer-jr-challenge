@@ -2,6 +2,7 @@ import ViewTask from './ViewTask/ViewTask';
 import './Todo.css';
 import TodoService from '../../services/TodoServices';
 import { useEffect, useState } from 'react';
+import {BsPlusCircleFill} from 'react-icons/bs';
 
 
 function Todo() {
@@ -26,7 +27,11 @@ function Todo() {
     }
     
     return (
-        <>
+        <>  
+            <div className='todo-header'>
+                <BsPlusCircleFill className="add-icon" size={35}/>
+                <h1>TodoList</h1>
+            </div>
             <div className="todo-container">
                 {
                     todosCompleted && todosNotCompleted && (
