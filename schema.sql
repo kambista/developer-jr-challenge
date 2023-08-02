@@ -7,5 +7,5 @@ CREATE TABLE todos (
     completed BOOLEAN DEFAULT false
 );
 
-INSERT INTO todos (title, description) VALUES ('Hacer café', 'Hacer café para el equipo de trabajo');
-INSERT INTO todos (title, description) VALUES ('Estudiar Node.js', 'Estudiar Node.js para el examen de certificación');
+INSERT INTO todos (title, description) VALUES ('Hacer cafe', 'Hacer cafe para el equipo de trabajo');
+INSERT INTO todos (title, description) VALUES ('Estudiar Node.js', 'Estudiar Node.js para el examen de certificacion');

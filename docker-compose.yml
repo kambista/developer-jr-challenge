@@ -8,6 +8,8 @@ services:
     volumes:
       - mysql_task:/var/lib/mysql
       - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
+
     expose:
       - "3306"
     restart: unless-stopped
@@ -39,7 +41,7 @@ services:
     build: ./frontend 
     container_name: frontend-task
     ports:
-      - "3015:5173"   # Corrige el mapeo de puertos para el host y el contenedor
+      - "5173:5173"   # Corrige el mapeo de puertos para el host y el contenedor
     restart: unless-stopped
     networks:
       - task-network
