@@ -2,14 +2,13 @@ import express from 'express'
 import swaggerUi from 'swagger-ui-express';
 import swaggerJsDoc from 'swagger-jsdoc';
 import cors from 'cors';
-
 import {
-    createTodo,
-    getTodos,
-    getTodoById,
-    updateTodo,
-    deleteTodoById,
-} from './database.js'
+    getAllTodos,
+    getTodo,
+    createNewTodo,
+    updateExistingTodo,
+    deleteTodo,
+} from './controllers/todo.controller.js';
 
 const allowedOrigins = ['http://127.0.0.1:5173', 'http://localhost:5173','http://localhost:3015/'];
 
@@ -75,14 +74,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
  *       500:
  *         description: Error del servidor
  */
-app.get('/todos', async (req, res) => {
-    try {
-        const todos = await getTodos();
-        res.status(200).json({ data: todos, status: true});
-    } catch (error) {
-        res.status(500).json({ error: error.message, status: false});
-    }
-});
+app.get('/todos', getAllTodos);
 
 /**
  * @swagger
@@ -143,20 +135,7 @@ app.get('/todos', async (req, res) => {
  *                   type: boolean
  *                   default: false
  */
-app.get('/todos/:id', async (req, res) => {
-    try {
-        const id = req.params.id;
-        const todo = await getTodoById(id);
-        
-        if (todo) {
-            res.status(200).json({ data: todo, status: true});
-        } else {
-            res.status(404).json({ error: 'Tarea no encontrada', status: false});
-        }
-    } catch (error) {
-        res.status(500).json({ error: error.message, status: false});
-    }
-});
+app.get('/todos/:id', getTodo);
   
   /**
    * @swagger
@@ -209,25 +188,7 @@ app.get('/todos/:id', async (req, res) => {
    *                   type: boolean
    *                   default: false
    */
-  app.post('/todos', async (req, res) => {
-    try {
-        const { title, description } = req.body;
-        if (!title || !description) {
-            res.status(400).json({ error: 'Datos incompletos', status: false});
-            return;
-        }
-
-        const id = await createTodo(
-            title,
-            description,
-        );
-        
-        const todos = await getTodos();
-        res.status(201).json({ data: todos, status: true});
-    } catch (error) {
-        res.status(500).json({ error: error.message, status: false});
-    }
-});
+  app.post('/todos', createNewTodo);
   
   /**
    * @swagger
@@ -287,46 +248,7 @@ app.get('/todos/:id', async (req, res) => {
    *                   type: boolean
    *                   default: false
    */
-  app.put('/todos/:id', async (req, res) => {
-    try {
-        const id = req.params.id;
-
-        console.log(id)
-
-        const todo = await getTodoById(id);
-        if (!todo) {
-            res.status(404).json({ error: 'Tarea no encontrada', status: false });
-            return;
-        }
-
-        const { title, description, completed } = req.body;
-
-        if (typeof title !== 'undefined') {
-            todo.title = title;
-        }
-
-        if (typeof description !== 'undefined') {
-            todo.description = description;
-        }
-
-        if (typeof completed !== 'undefined') {
-            todo.completed = completed;
-        }
-
-        console.log(todo)
-
-        const result = await updateTodo(
-            id,
-            todo.title,
-            todo.description,
-            todo.completed
-        );
-
-        res.status(200).json({ data: result, status: true });
-    } catch (error) {
-        res.status(500).json({ error: error.message, status: false });
-    }
-});
+  app.put('/todos/:id', updateExistingTodo);
   
   /**
    * @swagger
@@ -370,24 +292,7 @@ app.get('/todos/:id', async (req, res) => {
    *                   type: boolean
    *                   default: false
    */
-  app.delete('/todos/:id', async (req, res) => {
-    try {
-        const id = req.params.id;
-        const todo = await getTodoById(id);
-        if (!todo) {
-            res.status(404).json({ error: 'Tarea no encontrada', status: false});
-            return;
-        }
-        const result = await deleteTodoById(id);
-        if (result) {
-            res.status(204).json({ data: "Eliminado con exito", status: true});
-        } else {
-            res.status(500).json({ error: 'Error al eliminar la tarea', status: false});
-        }
-    } catch (error) {
-        res.status(500).json({ error: error.message, status: false});
-    }
-});
+  app.delete('/todos/:id', deleteTodo);
 
   
 
