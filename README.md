@@ -19,9 +19,15 @@ Antes de comenzar, asegúrate de tener instalados los siguientes componentes en 
 git clone https://github.com/diegobejardelaguila/developer-jr-challenge.git
 ```
 
-2. Crea un archivo .env basado en el archivo .env_example:
+2. Crea un archivo .env basado en el archivo .env_example, tambien para backend y front:
 ```bash
 cp .env_example .env
+```
+```bash
+ cp backend/.env_example backend/.env
+```
+```bash
+ cp frontend/.env_example frontend/.env
 ```
 
 3. Levanta los servicios utilizando Docker Compose:
