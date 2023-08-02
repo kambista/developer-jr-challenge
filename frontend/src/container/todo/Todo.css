@@ -19,3 +19,9 @@
     align-items: center;
     gap: 20px;
 }
+
+.todo-header button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
