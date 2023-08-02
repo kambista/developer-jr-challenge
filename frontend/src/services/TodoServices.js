@@ -35,7 +35,7 @@ const getTodoById = (id) => {
 };
 
 const deleteTodoById = (id) => {
-  const URL = "auth/reset-password";
+  const URL = "todos/"+id;
 
   return api.delete(URL, id).then((response) => response.data);
 };
