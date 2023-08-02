@@ -50,7 +50,9 @@ export async function updateTodo(id, title, description, completed) {
         const query =
         'UPDATE todos SET title = ?, description = ?, completed = ? WHERE id = ?';
         const result = await pool.query(query, [title, description, completed, id]);
-        return result.affectedRows > 0;
+
+        const todo = await getTodoById(id);
+        return todo;
     } catch (error) {
         throw new Error('Error al actualizar la tarea: ' + error.message);
     }
@@ -60,7 +62,7 @@ export async function deleteTodoById(id) {
     try {
         const query = 'DELETE FROM todos WHERE id = ?';
         const result = await pool.query(query, [id]);
-        return result.affectedRows > 0;
+        return true;
     } catch (error) {
         throw new Error('Error al eliminar la tarea: ' + error.message);
     }

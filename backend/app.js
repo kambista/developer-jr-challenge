@@ -131,8 +131,19 @@ app.get('/todos', async (req, res) => {
  *                   default: false
  */
 app.get('/todos/:id', async (req, res) => {
-    // Lógica para obtener una tarea por su ID
-  });
+    try {
+        const id = req.params.id;
+        const todo = await getTodoById(id);
+        
+        if (todo) {
+            res.status(200).json({ data: todo, status: true});
+        } else {
+            res.status(404).json({ error: 'Tarea no encontrada', status: false});
+        }
+    } catch (error) {
+        res.status(500).json({ error: error.message, status: false});
+    }
+});
   
   /**
    * @swagger
@@ -186,8 +197,24 @@ app.get('/todos/:id', async (req, res) => {
    *                   default: false
    */
   app.post('/todos', async (req, res) => {
-    // Lógica para crear una nueva tarea
-  });
+    try {
+        const { title, description } = req.body;
+        if (!title || !description) {
+            res.status(400).json({ error: 'Datos incompletos', status: false});
+            return;
+        }
+
+        const id = await createTodo(
+            title,
+            description,
+        );
+        
+        const todos = await getTodos();
+        res.status(201).json({ data: todos, status: true});
+    } catch (error) {
+        res.status(500).json({ error: error.message, status: false});
+    }
+});
   
   /**
    * @swagger
@@ -248,8 +275,45 @@ app.get('/todos/:id', async (req, res) => {
    *                   default: false
    */
   app.put('/todos/:id', async (req, res) => {
-    // Lógica para actualizar una tarea existente
-  });
+    try {
+        const id = req.params.id;
+
+        console.log(id)
+
+        const todo = await getTodoById(id);
+        if (!todo) {
+            res.status(404).json({ error: 'Tarea no encontrada', status: false });
+            return;
+        }
+
+        const { title, description, completed } = req.body;
+
+        if (typeof title !== 'undefined') {
+            todo.title = title;
+        }
+
+        if (typeof description !== 'undefined') {
+            todo.description = description;
+        }
+
+        if (typeof completed !== 'undefined') {
+            todo.completed = completed;
+        }
+
+        console.log(todo)
+
+        const result = await updateTodo(
+            id,
+            todo.title,
+            todo.description,
+            todo.completed
+        );
+
+        res.status(200).json({ data: result, status: true });
+    } catch (error) {
+        res.status(500).json({ error: error.message, status: false });
+    }
+});
   
   /**
    * @swagger
@@ -294,8 +358,24 @@ app.get('/todos/:id', async (req, res) => {
    *                   default: false
    */
   app.delete('/todos/:id', async (req, res) => {
-    // Lógica para eliminar una tarea por su ID
-  });
+    try {
+        const id = req.params.id;
+        const todo = await getTodoById(id);
+        if (!todo) {
+            res.status(404).json({ error: 'Tarea no encontrada', status: false});
+            return;
+        }
+        const result = await deleteTodoById(id);
+        if (result) {
+            res.status(204).json({ data: "Eliminado con exito", status: true});
+        } else {
+            res.status(500).json({ error: 'Error al eliminar la tarea', status: false});
+        }
+    } catch (error) {
+        res.status(500).json({ error: error.message, status: false});
+    }
+});
+
   
 
 app.listen(8089, () => {
