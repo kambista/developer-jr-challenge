@@ -5,7 +5,8 @@ import { useEffect, useState } from 'react';
 import {BsPlusCircleFill} from 'react-icons/bs';
 import Modal from 'react-modal';
 import FormCreate from '../../components/form/Form';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const customStyles = {
     content: {
@@ -27,8 +28,15 @@ function Todo() {
     const [todosNotCompleted, setTodosNotCompleted   ] = useState(null); 
     const [openModal, setOpenModal] = useState(false);
 
+    const notify = () => toast("Tarea creada con exito");
+    const notifyList = () => toast("Tareas cargadas correctamente");
+    const errorNotify = () => toast("Error al crear");
+
+
     useEffect(() => {
         getTodos();
+        notifyList();
+
     }, [])
 
     const getTodos = async () => {
@@ -62,14 +70,19 @@ function Todo() {
         if (response.status === true) {
             onRefresh();
             onModal();
+            notify();
         } else {
-            alert(response.message);
+            errorNotify();
         }
     }
 
 
     return (
         <>  
+            <ToastContainer 
+                theme="dark"
+            />
+
             <div className='todo-header'>
                 <button className='' onClick={onModal}>
                     <BsPlusCircleFill className="add-icon" size={35}/>

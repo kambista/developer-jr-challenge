@@ -12,8 +12,8 @@ export default function FormCreate({onSubmit}) {
             <label>Titulo:</label>
             <input maxLength={10} name='title' type="text" id="email" placeholder="" required />
 
-            <label>Description:</label>
-            <textarea maxLength={20} name='description' id="message" placeholder="Your message" required></textarea>
+            <label>Descripción:</label>
+            <textarea maxLength={20} name='description' id="message" placeholder="" required></textarea>
 
             <button type="submit">Crear</button>
             </div>
