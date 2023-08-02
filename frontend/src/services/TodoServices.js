@@ -42,7 +42,7 @@ const deleteTodoById = (id) => {
 
   
   
-const AuthService = {
+const TodoService = {
   createTodo,
   updateTodo,
   getTodos,
@@ -50,7 +50,7 @@ const AuthService = {
   deleteTodoById,
 };
 
-export default AuthService;
+export default TodoService;
 
 
 

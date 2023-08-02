@@ -1,11 +1,9 @@
 import './Button.css';
 
-function Button({ text }) {
+function Button({ text, onClick }) {
     return (
        <>
-        <footer>
-         <a href="#0" className="card__btn cd-btn cd-btn--primary">{text}</a>
-        </footer>
+         <button href="#0" onClick={onClick} className="card__btn cd-btn cd-btn--primary">{text}</button>
        </>
     )
 }
