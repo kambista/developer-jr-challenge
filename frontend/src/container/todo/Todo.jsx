@@ -58,7 +58,7 @@ function Todo() {
     const onCreate = async (e) => {
         e.preventDefault();
         const title = e.target[0].value;
-        const description = e.target[0].value;
+        const description = e.target[1].value;
 
         const todo = {
             title,
