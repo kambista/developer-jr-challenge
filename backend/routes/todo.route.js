@@ -296,9 +296,3 @@ app.get('/todos/:id', getTodo);
 
 
 export default app;
-
-
-
-
-
-
