@@ -1,7 +1,7 @@
 import Card from '../../../components/card/Card';
 import './ViewTask.css';
 import TodoService from '../../../services/TodoServices';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 
 export default function ViewTask({ title, todos, onRefresh }) {
