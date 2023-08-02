@@ -28,7 +28,6 @@ export async function getTodos() {
     try {
         const query = 'SELECT * FROM todos';
         const [rows] = await pool.query(query);
-        console.log(rows);
         return rows;
     } catch (error) {
         throw new Error('Error al obtener las tareas: ' + error.message);
@@ -62,7 +61,6 @@ export async function deleteTodoById(id) {
     try {
         const query = 'DELETE FROM todos WHERE id = ?';
         const result = await pool.query(query, [id]);
-        console.log(result);
         return true;
     } catch (error) {
         throw new Error('Error al eliminar la tarea: ' + error.message);

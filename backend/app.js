@@ -294,7 +294,6 @@ app.get('/todos/:id', getTodo);
    */
   app.delete('/todos/:id', deleteTodo);
 
-  
 
 app.listen(8089, () => {
     console.log('Servidor web iniciado');

@@ -96,7 +96,6 @@ export async function deleteTodo(req, res) {
         }
 
         const result = await deleteTodoById(id);
-        console.log(result)
         if (result===true) {
             res.status(204).json({ data: "Eliminado con éxito", status: true });
         } else {
