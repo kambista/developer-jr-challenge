@@ -67,3 +67,19 @@ TodoList te permite visualizar las tareas que tienes pendientes, como las comple
   - Si todo es correcto la tarea se elimina y se actualiza la lista.
 
 
+## Problema con git y docker
+```bash
+  frontend-task  | /usr/local/bin/docker-entrypoint.sh: exec: line 11: ./wait-for.sh: not found
+```
+  - Git con windows escapa los espacio modificando los archivos e imposibilitando que se creen correctamente en docker(mas informacion: https://stackoverflow.com/a/40537078):
+  - Ejecuta los siguientes comandos para que puedas copiar los archivos necesarios por algun contenedor de manera correcta.
+```bash
+git config --global core.autocrlf input
+```
+```bash
+git rm --cached -r .
+
+```
+```bash
+git reset --hard
+```
