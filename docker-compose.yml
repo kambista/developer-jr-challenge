@@ -1,0 +1,60 @@
+version: '3.7'
+
+services:
+  db_task:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password  
+    container_name: mysql-task
+    volumes:
+      - mysql_task:/var/lib/mysql
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
+
+    expose:
+      - "3306"
+    restart: unless-stopped
+    env_file: .env 
+    networks:
+      - task-network
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}  
+
+  backend:
+    build: ./backend 
+    container_name: backend-task
+    ports:
+      - "8089:8089"
+    restart: unless-stopped
+    env_file: ./backend/.env 
+    networks:
+      - task-network
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - db_task
+
+  
+  frontend:
+    build: ./frontend 
+    container_name: frontend-task
+    ports:
+      - "5173:5173"   # Corrige el mapeo de puertos para el host y el contenedor
+    restart: unless-stopped
+    networks:
+      - task-network
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules   
+    depends_on:
+      - backend
+      - db_task
+
+volumes:
+  mysql_task:
+  
+networks:
+  task-network:
+    driver: bridge
