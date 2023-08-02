@@ -14,7 +14,7 @@ const pool = mysql
     .promise();
 
 
-async function createTodo(title, description) {
+export async function createTodo(title, description) {
     try {
         const query = 'INSERT INTO todos (title, description) VALUES (?, ?)';
         const result = await pool.query(query, [title, description]);
@@ -24,17 +24,18 @@ async function createTodo(title, description) {
     }
     }
 
-async function getTodos() {
+export async function getTodos() {
     try {
         const query = 'SELECT * FROM todos';
         const [rows] = await pool.query(query);
+        console.log(rows);
         return rows;
     } catch (error) {
         throw new Error('Error al obtener las tareas: ' + error.message);
     }
     }
 
-async function getTodoById(id) {
+export async function getTodoById(id) {
     try {
         const query = 'SELECT * FROM todos WHERE id = ?';
         const [rows] = await pool.query(query, [id]);
@@ -44,7 +45,7 @@ async function getTodoById(id) {
     }
     }
 
-async function updateTodo(id, title, description, completed) {
+export async function updateTodo(id, title, description, completed) {
     try {
         const query =
         'UPDATE todos SET title = ?, description = ?, completed = ? WHERE id = ?';
@@ -55,7 +56,7 @@ async function updateTodo(id, title, description, completed) {
     }
     }
 
-async function deleteTodoById(id) {
+export async function deleteTodoById(id) {
     try {
         const query = 'DELETE FROM todos WHERE id = ?';
         const result = await pool.query(query, [id]);
