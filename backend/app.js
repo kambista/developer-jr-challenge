@@ -1,6 +1,7 @@
 import express from 'express'
 import swaggerUi from 'swagger-ui-express';
 import swaggerJsDoc from 'swagger-jsdoc';
+import cors from 'cors';
 
 import {
     createTodo,
@@ -10,8 +11,20 @@ import {
     deleteTodoById,
 } from './database.js'
 
+const allowedOrigins = ['http://127.0.0.1:5173', 'http://localhost:5173'];
+
+
 const app = express();
 app.use(express.json());
+app.use(
+    cors({
+      origin: (origin, callback) => {
+        // Verifica si el origen de la solicitud está permitido
+        const isAllowed = allowedOrigins.includes(origin);
+        callback(null, isAllowed);
+      },
+    })
+  );
 
 // Configurar Swagger
 const swaggerOptions = {
