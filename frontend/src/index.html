@@ -4,15 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css">
-    <title>Document</title>
+    <title>Tasks</title>
 </head>
 <body>
-    <section class="nav">
-        <h1>Lista de Tareas</h1>
-        <button>Agregar Tarea</button>
-    </section>
-    <section class="list">
-        
-    </section>
+    <div class="nav">
+        <h1>Lista de tareas</h1>
+    </div>
+    <div class="content">
+        <div class="list">
+            <h2>Todas las tareas</h2>
+            <div class="tasks">
+            </div>
+        </div>
+        <div class="form">
+            <h2>Agregue una tarea</h2>
+            <form action="#" id="form" class="formtotal">
+                <input type="text" id="title" placeholder="Tarea">
+                <textarea type="text" class="desc" id="description" placeholder="Descripción"></TExtarea>
+                <button type="submit" id="btnadd">Agregar Tarea</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="./app.js"></script>
 </body>
 </html>

@@ -1,0 +1,97 @@
+body{
+    background-color: #170100;
+    color: #ffff;
+}
+h1, h2{
+    text-transform: uppercase;
+    text-align: center;
+}
+.content{
+    display: flex;
+    width: 100%;
+}
+h2{
+    text-transform: uppercase;
+}
+.form{
+    width: 50%;
+    background-color: #3f0d13;
+    margin: 2%;
+    border-radius: 10px;
+}
+.list{
+    width: 50%;
+    margin: 2%;
+    border-radius: 10px;
+}
+.formtotal{
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+}
+.formtotal input, textarea{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    background-color: #9d6062;
+    color: white;
+    border: none;
+    height: 60px;
+}
+
+.formtotal .desc{
+    height: 100px;
+    resize: none;
+}
+
+.formtotal input:focus, textarea:focus{
+    background-color: #3f0d13;
+}
+
+.formtotal button{
+    background-color: #170100;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.formtotal button:hover{
+    font-weight: bold;
+}
+
+
+::placeholder{
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.tasks{
+    padding: 7.5%;
+    padding-top: 5%;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-weight: bold;
+}
+.tasks div{
+    display: flex;
+    justify-content: space-between;
+}
+.tasks p{
+    font-size: 15px;
+    font-weight: lighter;
+}
+.tasks button{
+    background-color: #9d6062;
+    border: none;
+    color: white;
+    font-weight: bold;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}

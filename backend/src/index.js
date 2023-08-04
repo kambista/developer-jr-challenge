@@ -1,18 +1,18 @@
 const express = require('express');
-const req = require('express/lib/request');
-const res = require('express/lib/response');
 const morgan = require('morgan');
+const cors = require('cors');
+const taskroutes = require('./routes/tasks');
 const app = express();
 
 app.set('port', 3000);
 
-
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
+app.use(cors());
 
 //routes
-app.use(require('./routes/tasks'));
+app.use( "/api/tasks" ,taskroutes);
 
 
 //Servidor
