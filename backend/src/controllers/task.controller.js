@@ -1,10 +1,6 @@
 const queries = require('../database/queries');
 const pool = require('../database/db');
 
-
-const tasks = require('../db.json');
-const { result } = require('underscore');
-
 const gettasks = (req, res) => {
     pool.query(queries.gettasks, (error, results) =>{
         if(error) throw error;
