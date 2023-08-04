@@ -29,4 +29,4 @@
 
 Esperamos que disfrutes de esta prueba técnica y te diviertas desarrollando la lista de tareas. Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarnos. ¡Estamos emocionados de ver lo que puedes hacer!
 
-¡Buena suerte y feliz codificación! 🚀
+¡Buena suerte y feliz codificación! 🚀|
