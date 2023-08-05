@@ -142,3 +142,4 @@ function clearscreen() {
     }
 }
 
+//se puede iniciar con el comando http-server o con la extension live-server
