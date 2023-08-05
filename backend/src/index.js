@@ -20,3 +20,6 @@ app.use( "/api/tasks" ,taskroutes);
 app.listen(app.get('port'), () => {
     console.log('server on port ' + app.get('port'));
 });
+
+//Puede iniciar con el comando npm run dev
+//http://localhost:3000/api/tasks
