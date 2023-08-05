@@ -1,7 +1,9 @@
 let listTasks = [];
 
+//inicializar con todas las tareas
 gettasks();
 
+//objeto y atributos para task
 const objtask = {
     title : '',
     description : '',
@@ -16,6 +18,7 @@ form.addEventListener('submit', validarform);
 function validarform(e){
     e.preventDefault();
 
+    //validar campos completos
     if(title.value === '' || description.value === ''){
         alert('Todos los campos deben estar completos');
         return;
@@ -24,13 +27,11 @@ function validarform(e){
     objtask.title = title.value;
     objtask.description = description.value;
 
+    //añadir a la db luego de validar
     addtask();
 }
 
 function addtask(){
-
-    listTasks.push({...objtask});
-    console.log(listTasks);
 
     fetch("http://localhost:3000/api/tasks", {
         method: 'POST',
@@ -48,22 +49,26 @@ function addtask(){
     })
 }
     
-
+//limpiar nuestro obj task
 function clearobj(){
-    objtask.id = '';
     objtask.title = '';
     objtask.description = '';
 }
 
+//muestra todas las tareas
 function showtasks(){
-    clearscreen();
+    clearscreen(); //limpiar las tareas mostradas antes para volver a mostrar todo
 
+    //div donde mostrar las tareas
     const tasks = document.querySelector('.tasks');
     
     console.log(listTasks);
 
+    //si no hay tareas, muestra un mensaje
     if(listTasks.length > 0){
         listTasks.forEach(task =>{
+
+            //se creo html desde js para listar todas las tareas
 
             const divtask = document.createElement('div');
             divtask.classList.add('task');
@@ -95,38 +100,41 @@ function showtasks(){
 
             tasks.appendChild(divtask);
         })
-        }
-        else{
+    }
+    else{
         const parrafo = document.createElement ('p');
         parrafo.classList.add('title');
         parrafo.textContent = "No hay tareas que realizar";
 
         tasks.appendChild(parrafo);
-        }   
+    }   
     
 }
 
+//listar tareas desde la db
 function gettasks(){
 
     fetch("http://localhost:3000/api/tasks").then(res => res.json()).then(response =>{ 
         listTasks = response;
+        //luego de listar, mostrar
         showtasks();
     });
 
 }
 
-
+//eliminar una tarea
 function deletetask(id){
-    listTasks = listTasks.filter(task => task.id !== id)
 
     fetch("http://localhost:3000/api/tasks/" + id, {
         method: 'DELETE'
     }).then(response => {
-    console.log(response.status);     
-    gettasks();
+        console.log(response.status);     
+        gettasks(); //volver a mostrar todo
     });
+
 }
 
+//remover todas las tareas agregadas de la vista html desde js
 function clearscreen() {
     const tasks = document.querySelector('.tasks');
     while(tasks.firstChild){

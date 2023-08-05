@@ -1,3 +1,4 @@
+//conectar con la db en postgresql
 const Pool = require ('pg').Pool;
 
 const pool = new Pool({

@@ -1,6 +1,7 @@
 const queries = require('../database/queries');
 const pool = require('../database/db');
 
+//listar
 const gettasks = (req, res) => {
     pool.query(queries.gettasks, (error, results) =>{
         if(error) throw error;
@@ -8,6 +9,7 @@ const gettasks = (req, res) => {
     });
 }
 
+//añadir 
 const posttasks = (req, res) =>{
     const {title, description} =  req.body;
 
@@ -18,16 +20,12 @@ const posttasks = (req, res) =>{
             res.status(201).json("tarea creada correctamente")
         })
 
-        //const id = tasks.length>0 ? tasks[tasks.length-1].id + 1 : tasks.length+1;
-        //const newtask = {id, ...req.body};
-        //console.log(newtask);
-        //tasks.push(newtask);
-        //res.json(tasks);
     }else{
         res.json('ERROR')
     }
 }
 
+//eliminar
 const deletetask = (req, res) => {
     
     const id = parseInt(req.params.id);
