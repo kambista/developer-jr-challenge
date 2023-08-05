@@ -143,3 +143,4 @@ function clearscreen() {
 }
 
 //se puede iniciar con el comando http-server o con la extension live-server
+//http://127.0.0.1:8080
