@@ -1,11 +1,6 @@
 let listTasks = [];
 
-fetch("http://localhost:3000/api/tasks").then(res => res.json()).then(response =>{
-    listTasks = response;
-    console.log(listTasks);
-    showtasks();
-});
-
+gettasks();
 
 const objtask = {
     title : '',
@@ -70,27 +65,40 @@ function showtasks(){
     if(listTasks.length > 0){
         listTasks.forEach(task =>{
 
-            const divlist = document.createElement('div')
+            const divtask = document.createElement('div');
+            divtask.classList.add('task');
+            const divlist = document.createElement('div');
+            divlist.classList.add('obj');
+            const divdesc = document.createElement('div');
             const {id, title, description} = task;
-            const parrafo = document.createElement ('p');
+            const parrafo1= document.createElement ('p');
+            parrafo1.classList.add('title');
+            const parrafo2= document.createElement ('p');
+            parrafo2.classList.add('description');
     
-            parrafo.textContent = title + " - " + description;
-            parrafo.dataset.id = id;
-    
+            parrafo1.textContent = title;
+            parrafo1.dataset.id = id;
+            parrafo2.textContent = description;
+            parrafo2.dataset.id = id;
             const btndelete = document.createElement ('button');
             btndelete.onclick = () => deletetask(id);
             btndelete.textContent = "Eliminar";
-            btndelete.classList.add('btn', 'btndelete');
+            btndelete.classList.add('btndelete');
+
+            divdesc.appendChild(parrafo1);
+            divdesc.appendChild(parrafo2);
+
+            divlist.appendChild(divdesc);
     
-            divlist.appendChild(parrafo);
-            divlist.appendChild(btndelete);
-    
-    
-            tasks.appendChild(divlist);
+            divtask.appendChild(divlist);
+            divtask.appendChild(btndelete);
+
+            tasks.appendChild(divtask);
         })
         }
         else{
         const parrafo = document.createElement ('p');
+        parrafo.classList.add('title');
         parrafo.textContent = "No hay tareas que realizar";
 
         tasks.appendChild(parrafo);

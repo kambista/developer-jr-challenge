@@ -14,13 +14,12 @@ h2{
     text-transform: uppercase;
 }
 .form{
-    width: 50%;
-    background-color: #3f0d13;
+    width: 100%;
     margin: 2%;
     border-radius: 10px;
 }
 .list{
-    width: 50%;
+    width: 100%;
     margin: 2%;
     border-radius: 10px;
 }
@@ -38,6 +37,7 @@ h2{
     color: white;
     border: none;
     height: 60px;
+    border-radius: 5px;
 }
 
 .formtotal .desc{
@@ -57,6 +57,8 @@ h2{
     text-decoration: none;
     margin: 4px 2px;
     cursor: pointer;
+    border: 1px solid white;
+    margin: 10px;
 }
 .formtotal button:hover{
     font-weight: bold;
@@ -69,29 +71,57 @@ h2{
     font-weight: bold;
 }
 
+.task{
+    display: flex;
+    justify-content: space-between;
+}
 .tasks{
     padding: 7.5%;
     padding-top: 5%;
+    margin: 10px;
     display: flex;
     flex-direction: column;
     color: white;
     font-weight: bold;
 }
-.tasks div{
-    display: flex;
-    justify-content: space-between;
+.tasks .obj{
+    background-color: #9d6062;
+    padding-left: 5.5%;
+    padding-right: 5.5%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    width: 100%;
 }
-.tasks p{
+.title{
     font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.description{
+    font-size: 20x;
     font-weight: lighter;
 }
-.tasks button{
-    background-color: #9d6062;
+.tasks button{  
+    background-color: #3f0d13;
     border: none;
     color: white;
     font-weight: bold;
     padding: 16px 32px;
     text-decoration: none;
-    margin: 4px 2px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-left: 5%;
     cursor: pointer;
+    border-radius: 5px;
+}
+.tasks button:hover{
+    text-transform: uppercase;
+}
+
+@media (max-width:700px){
+    .content{
+        display: flex;
+        flex-direction: column;
+    }
 }
