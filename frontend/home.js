@@ -26,17 +26,18 @@ list.addEventListener('click', function(ev) {
 
 function newElement() {
   var li = document.createElement("li");
-  var tituloVal = document.getElementById("titulo").value;
-  var desVal = document.getElementById("descipcion").value;
-  var t = document.createTextNode(tituloVal + ": " + desVal);
+  var inputValue = document.getElementById("myInput").value;
+  var inputValue2 = document.getElementById("myInput2").value;
+  var t = document.createTextNode(inputValue + ": " + inputValue2);
   li.appendChild(t);
-  if (tituloVal === '') {
-    alert("Agrega un titulo");
+  if (inputValue === '') {
+    alert("Debe tener por lo menos un titutlo");
   } else {
-    document.getElementById("lis").appendChild(li);
+    document.getElementById("myUL").appendChild(li);
   }
-  document.getElementById("titulo").value = "";
-  document.getElementById("descripcion").value = "";
+  document.getElementById("myInput").value = "";
+  document.getElementById("myInput2").value = "";
+
   var span = document.createElement("SPAN");
   var txt = document.createTextNode("\u00D7");
   span.className = "close";
