@@ -1,0 +1,23 @@
+{
+  "name": "developer-jr-challenge",
+  "version": "1.0.0",
+  "description": "¡Hola 👋 y bienvenido/a a nuestra prueba técnica para la posición de  Desarrollador Jr! Esta prueba está diseñada para evaluar tus habilidades en el desarrollo backend y frontend para una lista de tareas.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon node backend/src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "node-fetch": "^3.3.2",
+    "pg": "^8.11.2",
+    "underscore": "^1.13.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
