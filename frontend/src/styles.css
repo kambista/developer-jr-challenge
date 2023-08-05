@@ -1,10 +1,20 @@
 body{
     background-color: #170100;
     color: #ffff;
+    margin-top: 50px;
+}
+.name{
+    margin-left: 100px ;
+    margin-right: 100px;
 }
 h1, h2{
     text-transform: uppercase;
     text-align: center;
+}
+h1{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 1px solid white;
 }
 .content{
     display: flex;
