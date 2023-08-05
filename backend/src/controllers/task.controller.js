@@ -34,7 +34,7 @@ const deletetask = (req, res) => {
     pool.query(queries.deletetask, [id], (error, results) => {
         const notask = !results.rows.length;
         if(notask){
-            res.send("No existe la tarea");
+            res.json("No existe la tarea");
         }
     });
 }
