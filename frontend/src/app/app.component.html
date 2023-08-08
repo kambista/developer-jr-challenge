@@ -1,0 +1,20 @@
+<p-panel header="Notas">
+    <p-toolbar>
+        <div class="p-toolbar-group-start">
+            <p-button label="Agregar Nota" icon="pi pi-plus" class="mr-2" (onClick)="agregarNota()"></p-button>
+        </div>
+    </p-toolbar>
+    <p-card header="{{nota.name}}" *ngFor="let nota of notas">
+        <p class="m-0">
+            {{nota.contenido}}
+        </p>
+        <p-toolbar>
+            <div class="p-toolbar-group-start">
+                <p-button label="Eliminar" (onClick)="eliminarNota(nota.id)"></p-button>
+                <p-button label="Editar" (onClick)="editarNota(nota.id)"></p-button>
+            </div>
+        </p-toolbar>
+        
+    </p-card>
+</p-panel>
+<p-toast key="tst"></p-toast>
