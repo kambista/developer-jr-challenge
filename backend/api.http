@@ -1,0 +1,26 @@
+### Obtener notas
+GET http://localhost:4000/
+
+### Obtener nota
+GET http://localhost:4000/2
+
+### Crear nota
+POST http://localhost:4000/
+Content-Type: application/json
+
+{
+    "name": "Prueba 2",
+    "contenido": "prueba contenido"
+}
+
+### Actualizar nota
+PUT http://localhost:4000/2
+Content-Type: application/json
+
+{
+    "name": "Prueba 200",
+    "contenido": "prueba contenido"
+}
+
+### Eliminar nota
+DELETE  http://localhost:4000/2

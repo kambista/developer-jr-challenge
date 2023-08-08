@@ -1,0 +1,34 @@
+{
+  "name": "developer-jr-challenge",
+  "version": "1.0.0",
+  "description": "prueba técnica.",
+  "main": "index.js",
+  "scripts": {
+    "babel-node": "babel-node --presets=@babel/preset-env",
+    "dev": "nodemon --exec npm run babel-node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Elipinto23/developer-jr-challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Elipinto23/developer-jr-challenge/issues"
+  },
+  "homepage": "https://github.com/Elipinto23/developer-jr-challenge#readme",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mysql2": "^3.6.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.22.9",
+    "@babel/core": "^7.22.9",
+    "@babel/node": "^7.22.6",
+    "@babel/preset-env": "^7.22.9",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.0.1"
+  }
+}
